@@ -10,7 +10,11 @@ UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'mp4'}
 
 app = Flask(__name__)
-app.secret_key = 'snaplab_secret'
+UPLOAD_FOLDER = 'static/uploads'
+
+# ✅ Cria a pasta se ela não existir (isso evita o erro na Render)
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
